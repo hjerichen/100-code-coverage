@@ -24,11 +24,29 @@ class SimpleIfStatementTest extends TestCase
     }
 
     /**
-     *
+     * - a < 0
      */
-    public function testCalculateSomething(): void
+    public function testCalculateSomethingWithLowerZero(): void
     {
         $actual = $this->simpleIfStatement->calculateSomething(-20);
         $this->assertEquals(100, $actual);
+    }
+
+    /**
+     * - a > 0
+     */
+    public function testCalculateSomethingWithHigherZero(): void
+    {
+        $actual = $this->simpleIfStatement->calculateSomething(20);
+        $this->assertEquals(40, $actual);
+    }
+
+    /**
+     * - a = 0
+     */
+    public function testCalculateSomethingWithEqualZero(): void
+    {
+        $actual = $this->simpleIfStatement->calculateSomething(0);
+        $this->assertEquals(20, $actual);
     }
 }

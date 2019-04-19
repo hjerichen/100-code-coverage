@@ -24,10 +24,26 @@ class ShorthandIfElseTest extends TestCase
     }
 
     /**
-     *
+     * - a > 0
      */
-    public function testCalculate(): void
+    public function testCalculateHigherZero(): void
     {
         $this->assertEquals(10, $this->shorthandIfElse->calculate(10));
+    }
+
+    /**
+     * - a < 0
+     */
+    public function testCalculateLowerZero(): void
+    {
+        $this->assertEquals(10, $this->shorthandIfElse->calculate(10));
+    }
+
+    /**
+     * - a = 0
+     */
+    public function testCalculateEqualZero(): void
+    {
+        $this->assertEquals(0, $this->shorthandIfElse->calculate(0));
     }
 }

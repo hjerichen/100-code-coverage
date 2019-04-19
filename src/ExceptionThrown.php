@@ -5,6 +5,8 @@ namespace HJerichen\OneHundredCodeCoverage;
 
 
 use DateInterval;
+use Exception;
+use InvalidArgumentException;
 
 /**
  *
@@ -15,10 +17,14 @@ class ExceptionThrown
     /**
      * @param int $days
      * @return DateInterval
-     * @throws \Exception
+     * @throws Exception
      */
     public function createIntervalForDays(int $days): DateInterval
     {
-        return new DateInterval("P{$days}D");
+        try {
+            return new DateInterval("P{$days}D");
+        } catch (Exception $exception) {
+            throw new InvalidArgumentException("Invalid integer \"{$days}\" for days parameter.");
+        }
     }
 }

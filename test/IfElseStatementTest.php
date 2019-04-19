@@ -37,7 +37,7 @@ class IfElseStatementTest extends TestCase
      * - b < 0
      * @throws Exception
      */
-    public function testExecuteWithAHigherZero(): void
+    public function testExecuteWithAHigherZeroBLowerZero(): void
     {
         $expected = new DateInterval('P2D');
         $this->dateTime->add($expected)->shouldBeCalledOnce();
@@ -50,11 +50,37 @@ class IfElseStatementTest extends TestCase
      * - b < 0
      * @throws Exception
      */
-    public function testExecuteWithALowerZero(): void
+    public function testExecuteWithALowerZeroBLowerZero(): void
     {
         $expected = new DateInterval('P1D');
         $this->dateTime->add($expected)->shouldBeCalledOnce();
 
         $this->ifElseStatement->execute(-4, -2);
+    }
+
+    /**
+     * - a > 0
+     * - b > 0
+     * @throws Exception
+     */
+    public function testExecuteWithAHigherZeroBHigherZero(): void
+    {
+        $expected = new DateInterval('P2D');
+        $this->dateTime->add($expected)->shouldBeCalledOnce();
+
+        $this->ifElseStatement->execute(4, 2);
+    }
+
+    /**
+     * - a < 0
+     * - b > 0
+     * @throws Exception
+     */
+    public function testExecuteWithALowerZeroBHigherZero(): void
+    {
+        $expected = new DateInterval('P2D');
+        $this->dateTime->add($expected)->shouldBeCalledOnce();
+
+        $this->ifElseStatement->execute(-4, 2);
     }
 }

@@ -29,6 +29,6 @@ class UselessAssertTest extends TestCase
     public function testAdd(): void
     {
         $result = $this->uselessAssert->add(2, 5);
-        $this->assertEquals(1, 1);
+        $this->assertEquals(7, $result);
     }
 }
