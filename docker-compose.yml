@@ -1,0 +1,10 @@
+version: "3.1"
+services:
+
+    php-fpm:
+      build: docker/php-fpm
+      container_name: 100-code-coverage__php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+      command: bash -c "cd /application && composer install && tail -f /dev/null"
